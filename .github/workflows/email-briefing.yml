@@ -1,0 +1,24 @@
+name: 메일 브리핑
+
+on:
+  schedule:
+    - cron: "52 22 * * *"   # 매일 오전 7:52 (KST)
+  workflow_dispatch:
+
+jobs:
+  briefing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: 메일 분석 및 발송
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          REPORT_TO: ${{ secrets.REPORT_TO }}
+          USER_CONTEXT: ${{ secrets.USER_CONTEXT }}
+        run: python email_advisor.py --days 1 --send

@@ -1,0 +1,5 @@
+anthropic>=0.70
+pydantic>=2.0
+python-dotenv>=1.0
+beautifulsoup4>=4.12
+markdown>=3.5
