@@ -1,0 +1,316 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ==========================================================================
+   1. Raw palette — muted, warm, tone-on-tone. Never used directly in
+      components; components consume the semantic tokens below.
+   ========================================================================== */
+:root {
+  --ink-950: #141312; /* modern black, warm undertone */
+  --ink-900: #1c1b19;
+  --ink-800: #262523; /* deep dark gray */
+  --ink-700: #34322f;
+  --ink-600: #4a4743;
+
+  --stone-500: #6f6a63;
+  --stone-400: #969086;
+  --stone-300: #b9b2a6;
+
+  --sand-300: #cfc5b4; /* soft beige */
+  --sand-200: #ddd5c7;
+
+  --oat-100: #ebe5da; /* oatmeal */
+  --oat-50: #f3efe8;
+  --paper: #f8f6f1; /* warm off-white */
+}
+
+/* ==========================================================================
+   2. Semantic tokens (shadcn/ui contract) — Light: "oat paper"
+   ========================================================================== */
+:root {
+  --radius: 0.25rem;
+
+  --background: var(--paper);
+  --foreground: var(--ink-900);
+
+  --card: var(--oat-50);
+  --card-foreground: var(--ink-900);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink-900);
+
+  --primary: var(--ink-900);
+  --primary-foreground: var(--paper);
+  --secondary: var(--oat-100);
+  --secondary-foreground: var(--ink-800);
+
+  --muted: var(--oat-100);
+  --muted-foreground: var(--stone-500);
+  --accent: var(--sand-200);
+  --accent-foreground: var(--ink-900);
+
+  --destructive: #8a4b3c; /* muted terracotta, never pure red */
+  --border: color-mix(in oklab, var(--ink-900) 12%, transparent);
+  --input: color-mix(in oklab, var(--ink-900) 18%, transparent);
+  --ring: var(--stone-400);
+
+  /* Editorial extras */
+  --subtle: var(--stone-400);
+  --hairline: color-mix(in oklab, var(--ink-900) 8%, transparent);
+  --surface-sunken: var(--oat-100);
+  --surface-inverse: var(--ink-900);
+  --surface-inverse-foreground: var(--oat-50);
+}
+
+/* Dark: "charcoal room" */
+.dark {
+  --background: var(--ink-950);
+  --foreground: var(--oat-100);
+
+  --card: var(--ink-900);
+  --card-foreground: var(--oat-100);
+  --popover: var(--ink-900);
+  --popover-foreground: var(--oat-100);
+
+  --primary: var(--oat-100);
+  --primary-foreground: var(--ink-950);
+  --secondary: var(--ink-800);
+  --secondary-foreground: var(--oat-100);
+
+  --muted: var(--ink-800);
+  --muted-foreground: var(--stone-400);
+  --accent: var(--ink-700);
+  --accent-foreground: var(--oat-50);
+
+  --destructive: #b07a6c;
+  --border: color-mix(in oklab, var(--oat-100) 12%, transparent);
+  --input: color-mix(in oklab, var(--oat-100) 18%, transparent);
+  --ring: var(--stone-500);
+
+  --subtle: var(--stone-500);
+  --hairline: color-mix(in oklab, var(--oat-100) 7%, transparent);
+  --surface-sunken: var(--ink-900);
+  --surface-inverse: var(--oat-100);
+  --surface-inverse-foreground: var(--ink-900);
+}
+
+/* ==========================================================================
+   3. Tailwind theme mapping
+   ========================================================================== */
+@theme inline {
+  /* Colors → bg-background, text-muted-foreground, border-border … */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-subtle: var(--subtle);
+  --color-hairline: var(--hairline);
+  --color-sunken: var(--surface-sunken);
+  --color-inverse: var(--surface-inverse);
+  --color-inverse-foreground: var(--surface-inverse-foreground);
+
+  /* Raw palette, for rare art-directed moments (bg-oat-100, text-ink-800) */
+  --color-ink-950: var(--ink-950);
+  --color-ink-900: var(--ink-900);
+  --color-ink-800: var(--ink-800);
+  --color-ink-700: var(--ink-700);
+  --color-ink-600: var(--ink-600);
+  --color-stone-500: var(--stone-500);
+  --color-stone-400: var(--stone-400);
+  --color-stone-300: var(--stone-300);
+  --color-sand-300: var(--sand-300);
+  --color-sand-200: var(--sand-200);
+  --color-oat-100: var(--oat-100);
+  --color-oat-50: var(--oat-50);
+  --color-paper: var(--paper);
+
+  /* Fonts (CSS variables injected by next/font in layout.tsx) */
+  --font-sans: var(--font-pretendard), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display-latin), var(--font-pretendard), ui-sans-serif, sans-serif;
+
+  /* Radius — restrained, almost square */
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+
+  /* Fluid editorial type scale: size / line-height / tracking */
+  --text-display: clamp(3rem, 1.6rem + 6vw, 8.5rem);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.03em;
+
+  --text-headline: clamp(2.25rem, 1.5rem + 3vw, 4.5rem);
+  --text-headline--line-height: 1.08;
+  --text-headline--letter-spacing: -0.02em;
+
+  --text-title: clamp(1.5rem, 1.2rem + 1.2vw, 2.25rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.01em;
+
+  --text-lead: clamp(1.0625rem, 1rem + 0.4vw, 1.375rem);
+  --text-lead--line-height: 1.75;
+  --text-lead--letter-spacing: 0.005em;
+
+  --text-body: 1rem;
+  --text-body--line-height: 1.85;
+  --text-body--letter-spacing: 0.01em;
+
+  --text-caption: 0.8125rem;
+  --text-caption--line-height: 1.7;
+  --text-caption--letter-spacing: 0.02em;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1.4;
+  --text-eyebrow--letter-spacing: 0.28em;
+
+  /* Generous vertical rhythm */
+  --spacing-section: clamp(6rem, 4rem + 8vw, 12rem);
+  --spacing-gutter: clamp(1.25rem, 0.75rem + 2.5vw, 4rem);
+
+  /* Motion — the only two curves we use */
+  --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-soft: cubic-bezier(0.4, 0, 0.2, 1);
+  --animate-fade-in: fade-in 1.2s var(--ease-editorial) both;
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+  }
+}
+
+/* ==========================================================================
+   4. Base
+   ========================================================================== */
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans text-body;
+    word-break: keep-all; /* 한글 어절 단위 줄바꿈 */
+    overflow-wrap: anywhere;
+    font-feature-settings: "ss06", "tnum" 0;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display font-light text-balance;
+  }
+
+  p {
+    @apply text-pretty;
+  }
+
+  ::selection {
+    background: var(--sand-300);
+    color: var(--ink-950);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ==========================================================================
+   5. Editorial utilities
+   ========================================================================== */
+@utility container-editorial {
+  width: 100%;
+  max-width: 90rem; /* 1440px */
+  margin-inline: auto;
+  padding-inline: var(--spacing-gutter);
+}
+
+/* 12-column grid that collapses to 4 on mobile, 8 on tablet */
+@utility grid-editorial {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  @media (width >= 48rem) { grid-template-columns: repeat(8, minmax(0, 1fr)); }
+  @media (width >= 64rem) { grid-template-columns: repeat(12, minmax(0, 1fr)); }
+}
+
+@utility eyebrow {
+  font-size: var(--text-eyebrow);
+  line-height: var(--text-eyebrow--line-height);
+  letter-spacing: var(--text-eyebrow--letter-spacing);
+  text-transform: uppercase;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+/* Barely-there paper grain for large flat surfaces */
+@utility bg-grain {
+  position: relative;
+  isolation: isolate;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* Underline that draws in from the left on hover */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.6s var(--ease-editorial);
+  &:hover, &:focus-visible { background-size: 100% 1px; }
+}
+
+/* Long-form copy via @tailwindcss/typography, re-themed to our tokens */
+@utility prose-editorial {
+  --tw-prose-body: var(--foreground);
+  --tw-prose-headings: var(--foreground);
+  --tw-prose-lead: var(--muted-foreground);
+  --tw-prose-links: var(--foreground);
+  --tw-prose-bold: var(--foreground);
+  --tw-prose-counters: var(--muted-foreground);
+  --tw-prose-bullets: var(--subtle);
+  --tw-prose-hr: var(--border);
+  --tw-prose-quotes: var(--foreground);
+  --tw-prose-quote-borders: var(--sand-300);
+  --tw-prose-captions: var(--muted-foreground);
+  --tw-prose-code: var(--foreground);
+  --tw-prose-pre-bg: var(--surface-sunken);
+  --tw-prose-pre-code: var(--foreground);
+  --tw-prose-th-borders: var(--border);
+  --tw-prose-td-borders: var(--hairline);
+  max-width: 68ch;
+  line-height: 1.9;
+  letter-spacing: 0.01em;
+}
