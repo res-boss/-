@@ -1,0 +1,73 @@
+import type { Dictionary } from "./ko";
+
+export const ja: Dictionary = {
+  meta: {
+    siteName: "Redstart ENM",
+    description: "Redstart ENM 公式サイト",
+  },
+  nav: {
+    home: "Home",
+    about: "About",
+    artists: "Artists",
+    news: "News",
+    contact: "Audition & Contact",
+    menu: "メニュー",
+    close: "閉じる",
+    language: "言語",
+    skipToContent: "本文へ移動",
+  },
+  home: {
+    eyebrow: "Official Website",
+    scroll: "Scroll",
+    aboutCta: "会社概要",
+    artistsCta: "アーティスト一覧",
+    newsCta: "ニュース一覧",
+    contactCta: "オーディション・お問い合わせ",
+  },
+  about: {
+    eyebrow: "About",
+    title: "会社概要",
+    vision: "Vision",
+    history: "History",
+    message: "CEO Message",
+  },
+  artists: {
+    eyebrow: "Artists",
+    title: "アーティスト",
+    members: "Members",
+    debut: "Debut",
+    viewProfile: "プロフィール",
+    back: "アーティスト一覧",
+  },
+  news: {
+    eyebrow: "News",
+    title: "ニュース・お知らせ",
+    all: "すべて",
+    notice: "お知らせ",
+    press: "プレスリリース",
+    readMore: "続きを読む",
+    back: "一覧へ戻る",
+  },
+  contact: {
+    eyebrow: "Audition & Contact",
+    title: "オーディション・お問い合わせ",
+    audition: "Audition",
+    business: "Business Inquiry",
+    location: "Location",
+    email: "Email",
+    phone: "Tel",
+    address: "Address",
+  },
+  footer: {
+    company: "商号",
+    ceo: "代表",
+    businessNumber: "事業者登録番号",
+    address: "所在地",
+    privacy: "プライバシーポリシー",
+    rights: "All rights reserved.",
+  },
+  empty: {
+    title: "準備中です",
+    body: "近日中に公開予定です。",
+  },
+};

@@ -1,0 +1,73 @@
+import type { Dictionary } from "./ko";
+
+export const en: Dictionary = {
+  meta: {
+    siteName: "Redstart ENM",
+    description: "Official website of Redstart ENM",
+  },
+  nav: {
+    home: "Home",
+    about: "About",
+    artists: "Artists",
+    news: "News",
+    contact: "Audition & Contact",
+    menu: "Menu",
+    close: "Close",
+    language: "Language",
+    skipToContent: "Skip to content",
+  },
+  home: {
+    eyebrow: "Official Website",
+    scroll: "Scroll",
+    aboutCta: "About us",
+    artistsCta: "All artists",
+    newsCta: "All news",
+    contactCta: "Audition & Contact",
+  },
+  about: {
+    eyebrow: "About",
+    title: "About Us",
+    vision: "Vision",
+    history: "History",
+    message: "CEO Message",
+  },
+  artists: {
+    eyebrow: "Artists",
+    title: "Artists",
+    members: "Members",
+    debut: "Debut",
+    viewProfile: "View profile",
+    back: "All artists",
+  },
+  news: {
+    eyebrow: "News",
+    title: "News & Notice",
+    all: "All",
+    notice: "Notice",
+    press: "Press",
+    readMore: "Read more",
+    back: "Back to list",
+  },
+  contact: {
+    eyebrow: "Audition & Contact",
+    title: "Audition & Contact",
+    audition: "Audition",
+    business: "Business Inquiry",
+    location: "Location",
+    email: "Email",
+    phone: "Tel",
+    address: "Address",
+  },
+  footer: {
+    company: "Company",
+    ceo: "CEO",
+    businessNumber: "Business Reg. No.",
+    address: "Address",
+    privacy: "Privacy Policy",
+    rights: "All rights reserved.",
+  },
+  empty: {
+    title: "Coming soon",
+    body: "New updates will be posted here shortly.",
+  },
+};

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
 
 import { Section } from "@/components/layout/section";
@@ -10,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 
 /*
  * Step 1 — Design system preview.
- * This page is replaced by the real main page sections in step 2.
+ * Internal reference page (noindex) — tokens and components at a glance.
  */
 
 const PALETTE = [
@@ -33,6 +34,8 @@ const TYPE_SCALE = [
   { token: "text-caption", spec: "13px · 1.7 · +2%", sample: "Oak, linen and hand-thrown stoneware — Seoul, 2026" },
   { token: "eyebrow", spec: "11px · uppercase · +28%", sample: "Collection 04" },
 ];
+
+export const metadata: Metadata = { title: "Design System", robots: { index: false } };
 
 export default function DesignSystemPage() {
   return (
